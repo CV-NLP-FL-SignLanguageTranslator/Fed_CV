@@ -15,4 +15,5 @@ sequenceDiagram
     Global Server->>Global Server: Update global model & End round
     end
     
+    Note over Global Server: Deploy global model
 ```
