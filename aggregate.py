@@ -1,10 +1,11 @@
 import torch
 
 
-def get_state_dicts(models_dir):
+def get_state_dicts(models_dir, global_round):
     """
     Returns each weight per model of the model files in the given directory address.
     :param models_dir: directory address of the models
+    :param global_round: global round number
 
     :return: client's state_dicts containing the weights and biases
     """
@@ -13,7 +14,7 @@ def get_state_dicts(models_dir):
     # model = Model()
 
     for client in clients_id:
-        uploaded_model_state_dict = torch.load(models_dir + f'model_{client}.pickle')
+        uploaded_model_state_dict = torch.load(models_dir + f'model_{client}_{global_round}.pickle')
         model_state_dict = uploaded_model_state_dict.state_dict()
         state_dicts.append(model_state_dict)
 
